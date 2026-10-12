@@ -33,7 +33,10 @@
 
   /* ④ 想让两个块有明显高度，得给卡片一个最小高度 */
   width: min(660px, 100%);
+  max-width: 100%;
+  min-width: 0;
   min-height: 370px;
+  max-height: calc(100vh - 48px);
   /* font-family: "Segoe UI", "Microsoft YaHei", sans-serif; */
 }
 
@@ -44,12 +47,15 @@
   border-radius: 8px; /* 比外层 12px 小，嵌套圆角才不别扭 */
 }
 
+/* BaseCard.vue —— 删掉 justify-content: center */
 .card__body {
-  flex: 1;              /* 吃掉剩余高度，把 footer 顶到底部 */
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center;   ← 删掉这一行 */
   gap: 24px;
   padding: 40px 24px;
   text-align: center;
